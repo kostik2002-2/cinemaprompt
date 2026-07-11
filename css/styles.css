@@ -1,12 +1,12 @@
 /* Extracted from index.html on 20260709-121538. Do not rename existing classes/ids without checking index.html. */
 
 body {
-            font-family: 'Manrope', sans-serif;
+            font-family: "Segoe UI", Arial, sans-serif;
             background-color: #030712;
             overflow-x: hidden;
         }
         .mono {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: Consolas, "Courier New", monospace;
         }
         
         /* Улучшенные стеклянные карточки с динамическим свечением при наведении */
@@ -192,7 +192,7 @@ body::before {
 }
 
 h1, h2 {
-    font-family: 'Unbounded', 'Manrope', sans-serif;
+    font-family: "Arial Black", "Segoe UI", Arial, sans-serif;
     letter-spacing: -0.055em;
 }
 
@@ -767,7 +767,7 @@ header#top .hero-overlay{
     opacity:.30;
 }
 .hero-kicker{
-    font-family:'JetBrains Mono', monospace;
+    font-family:Consolas, "Courier New", monospace;
 }
 .hero-title{
     max-width:1100px;
