@@ -865,6 +865,7 @@ header#top .hero-overlay{
 .smartphone-reco-list{display:grid;gap:.85rem}
 .smartphone-reco-item{padding:.9rem;border-radius:1rem;background:rgba(15,23,42,.62);border:1px solid rgba(255,255,255,.06)}
 .smartphone-reco-item strong{color:#fbbf24;display:block;margin-bottom:.35rem}
+#iphone .smartphone-reco-item:last-child strong{color:#ef4444}
 .smartphone-prompt-modal{position:fixed;inset:0;z-index:130;display:none;align-items:center;justify-content:center;padding:1rem;background:rgba(2,6,23,.78);backdrop-filter:blur(14px)}
 .smartphone-prompt-modal.visible{display:flex}
 .smartphone-prompt-card{width:min(760px,100%);border-radius:1.4rem;background:rgba(15,23,42,.97);border:1px solid rgba(255,255,255,.10);box-shadow:0 30px 90px rgba(0,0,0,.56);padding:1.35rem}
@@ -1171,9 +1172,6 @@ header#top .hero-overlay{
         margin-bottom: .16rem !important;
     }
 
-    #iphone .smartphone-reco-item:last-child strong{
-        color:#ef4444 !important;
-    }
 }
 
 
