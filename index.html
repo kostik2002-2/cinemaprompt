@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>CinemaPrompt — камеры и кинооптика в промптах для AI-генерации</title>
+<meta name="description" content="Визуальный гайд по камерам, кинооптике и промптам для AI-генерации изображений. Сравнивайте характер iPhone, Canon, Leica, ARRI, Panavision, IMAX и других систем."/>
+<meta name="author" content="CinemaPrompt"/>
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
+<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
+<meta name="theme-color" content="#030712"/>
+<meta name="color-scheme" content="dark"/>
+<link rel="canonical" href="https://cinemaprompt.ru/"/>
+<link rel="alternate" hreflang="ru" href="https://cinemaprompt.ru/"/>
+<link rel="alternate" hreflang="x-default" href="https://cinemaprompt.ru/"/>
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon.png"/>
+<link rel="apple-touch-icon" href="/favicon.png"/>
+<link rel="manifest" href="/site.webmanifest"/>
+
+<meta property="og:type" content="website"/>
+<meta property="og:locale" content="ru_RU"/>
+<meta property="og:site_name" content="CinemaPrompt"/>
+<meta property="og:url" content="https://cinemaprompt.ru/"/>
+<meta property="og:title" content="CinemaPrompt — камеры и кинооптика в промптах"/>
+<meta property="og:description" content="Один промпт — разные визуальные языки. Практический гайд по камерам, оптике и стилям для AI-генерации изображений."/>
+<meta property="og:image" content="https://cinemaprompt.ru/assets/og-image.png"/>
+<meta property="og:image:secure_url" content="https://cinemaprompt.ru/assets/og-image.png"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:alt" content="CinemaPrompt — One Prompt. Infinite Visual Styles."/>
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="CinemaPrompt — камеры и кинооптика в промптах"/>
+<meta name="twitter:description" content="Один промпт — разные визуальные языки. Практический гайд для AI-креаторов."/>
+<meta name="twitter:image" content="https://cinemaprompt.ru/assets/og-image.png"/>
+<meta name="twitter:image:alt" content="CinemaPrompt — One Prompt. Infinite Visual Styles."/>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800;900&amp;family=Unbounded:wght@500;600;700;800&amp;family=JetBrains+Mono:wght=400;500;700&amp;display=swap" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://cinemaprompt.ru/#website",
+      "url": "https://cinemaprompt.ru/",
+      "name": "CinemaPrompt",
+      "description": "Визуальный гайд по камерам, кинооптике и промптам для AI-генерации изображений.",
+      "inLanguage": "ru-RU"
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://cinemaprompt.ru/#guide",
+      "url": "https://cinemaprompt.ru/",
+      "name": "CinemaPrompt — камеры и кинооптика в промптах",
+      "description": "Практический визуальный гайд по влиянию камер и кинооптики на характер AI-генераций.",
+      "inLanguage": "ru-RU",
+      "isPartOf": {
+        "@id": "https://cinemaprompt.ru/#website"
+      },
+      "image": "https://cinemaprompt.ru/assets/og-image.png",
+      "about": [
+        "AI image generation",
+        "cinematography prompts",
+        "camera aesthetics",
+        "visual prompt engineering"
+      ],
+      "learningResourceType": "Guide",
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "AI creators, prompt engineers, photographers and filmmakers"
+      }
+    }
+  ]
+}
+</script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="text-slate-100 antialiased selection:bg-amber-500 selection:text-black relative">
+<div class="progress-line" id="progressLine"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
+<div class="film-grain"></div>
+<div class="absolute top-0 left-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-[120px] pointer-events-none animate-pulse-slow z-0"></div>
+<div class="absolute top-[120vh] right-1/4 w-[500px] h-[500px] bg-orange-600/5 rounded-full blur-[150px] pointer-events-none animate-pulse-slow-reverse z-0"></div>
+<div class="absolute bottom-1/4 left-1/3 w-[600px] h-[600px] bg-yellow-500/5 rounded-full blur-[160px] pointer-events-none animate-pulse-slow z-0"></div>
+<div class="fixed inset-0 bg-black/95 z-50 hidden flex items-center justify-center p-4 backdrop-blur-md cursor-zoom-out" id="lightbox" onclick="closeLightbox(event)">
+<button class="lightbox-gallery-arrow prev" id="lightboxGalleryPrev" type="button" onclick="lightboxGalleryPrev(event)" aria-label="Предыдущее фото">
+<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<button class="lightbox-gallery-arrow next" id="lightboxGalleryNext" type="button" onclick="lightboxGalleryNext(event)" aria-label="Следующее фото">
+<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+
+<button class="smartphone-gallery-arrow prev" id="smartphoneGalleryPrev" type="button" onclick="smartphoneGalleryPrev(event)" aria-label="Предыдущее фото">
+<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<button class="smartphone-gallery-arrow next" id="smartphoneGalleryNext" type="button" onclick="smartphoneGalleryNext(event)" aria-label="Следующее фото">
+<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+
+<button class="absolute top-6 right-6 text-white/40 hover:text-white text-4xl font-light transition-all transform hover:rotate-90 duration-300" onclick="closeLightbox(event)">×</button>
+<div class="relative max-w-full max-h-[90vh] flex items-center justify-center">
+<img decoding="async" alt="Full Size" class="max-w-full max-h-[90vh] rounded-xl object-contain shadow-2xl transition-all duration-500 scale-95 opacity-0" id="lightbox-img" src=""/>
+
+</div>
+</div>
+<header class="relative min-h-[90vh] flex items-center justify-center border-b border-slate-900/60 bg-gradient-to-b from-slate-950 via-[#030712] to-[#030712] px-6 text-center overflow-hidden z-10" id="top"><div class="hero-overlay"></div>
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.08),transparent_70%)]"></div>
+<div class="absolute inset-0 bg-[linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-30"></div>
+
+
+<div class="lang-switcher" aria-label="Language switcher">
+<button type="button" data-lang-button="ru" class="active" onclick="setLang('ru')">RU</button>
+<button type="button" data-lang-button="en" onclick="setLang('en')">ENG</button>
+</div>
+<div class="max-w-5xl mx-auto relative z-10 py-20 space-y-8">
+<span class="hero-kicker inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.34em] text-amber-400 font-bold bg-amber-500/10 px-4 py-2 rounded-full border border-amber-500/20 shadow-lg shadow-amber-500/5">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-ping"></span>
+                AI VISUAL CHEAT SHEET
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-ping"></span>
+            </span>
+<h1 class="hero-title text-5xl md:text-7xl font-extrabold tracking-tight text-white leading-[1.15] md:leading-[1.1]">
+                Камеры в промпте<br/>
+<span class="bg-gradient-to-r from-amber-400 via-orange-400 to-yellow-500 bg-clip-text text-transparent drop-shadow-sm">
+                    Ваши генерации заговорят языком кино
+                </span>
+</h1>
+<div class="hero-copy space-y-3 text-base md:text-xl text-slate-300 mx-auto font-normal leading-relaxed">
+<p>Простой лайфхак, который заметно изменит характер ваших AI-генераций.</p>
+<p>Профессиональные камеры и кинооптика помогают AI точнее интерпретировать атмосферу, стиль и визуальный характер изображения.</p>
+</div>
+<div class="hero-cta-wrap">
+<a class="hero-cta-btn" href="#iphone" onclick="this.classList.add('cta-stopped')">Попробовать лайфхак ↓</a>
+<p class="hero-cta-caption">11 визуальных характеров. От смартфона до Hasselblad</p>
+</div>
+</div>
+</header>
+<div class="max-w-[1600px] mx-auto px-4 md:px-8 py-12 lg:py-20 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative z-10">
+<aside class="lg:col-span-3 lg:sticky lg:top-8 max-h-[85vh] overflow-y-auto bg-slate-950/40 p-5 rounded-2xl border border-slate-900/80 backdrop-blur-xl hidden lg:block shadow-2xl">
+<div class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-5 px-3 flex items-center gap-2">
+<svg class="w-3 h-3 text-amber-500" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 011-1zm0 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 011-1zm0 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 011-1z" fill-rule="evenodd"></path></svg>
+                Матрица восприятия кадра
+            </div>
+<nav aria-label="Навигация по разделам камер" class="space-y-1 text-sm font-medium">
+<a class="nav-link block py-2.5 px-3 rounded-lg text-slate-400 hover:text-white transition-all" href="#iphone">1. Смартфон — Доверие</a>
+<a class="nav-link block py-2.5 px-3 rounded-lg text-slate-400 hover:text-white transition-all" href="#canon">2. Canon — Коммерция</a>
+<a class="nav-link block py-2.5 px-3 rounded-lg text-slate-400 hover:text-white transition-all" href="#leica">3. Leica — Момент</a>
+<a class="nav-link block py-2.5 px-3 rounded-lg text-slate-400 hover:text-white transition-all" href="#panavision">4. Panavision — Постановка</a>
+<a class="nav-link block py-2.5 px-3 rounded-lg text-slate-400 hover:text-white transition-all" href="#nikon">5. Nikon — Реализм</a>
+<a class="nav-link block py-2.5 px-3 rounded-lg text-slate-400 hover:text-white transition-all" href="#arri">6. ARRI Alexa — Кино</a>
+<a class="nav-link block py-2.5 px-3 rounded-lg text-slate-400 hover:text-white transition-all" href="#hasselblad">7. Hasselblad — Статус</a>
+<a class="nav-link block py-2.5 px-3 rounded-lg text-slate-400 hover:text-white transition-all" href="#imax">8. IMAX — Масштаб</a>
+<a class="nav-link block py-2.5 px-3 rounded-lg text-slate-400 hover:text-white transition-all" href="#sony">9. Sony — Детализация</a>
+<a class="nav-link block py-2.5 px-3 rounded-lg text-slate-400 hover:text-white transition-all" href="#lomo">10. Lomography — Хаос</a>
+<a class="nav-link block py-2.5 px-3 rounded-lg text-slate-400 hover:text-white transition-all" href="#fuji">11. Fujifilm — Атмосфера</a>
+<a class="nav-link block py-2.5 px-3 rounded-lg text-slate-400 hover:text-white transition-all" href="#top" onclick="event.preventDefault(); window.scrollTo({top:0, behavior:'smooth'});">↑ Наверх</a></nav>
+</aside>
+<main class="col-span-1 lg:col-span-9 space-y-20">
+<section class="glass-card rounded-3xl p-6 md:p-10 space-y-8 relative" id="iphone">
+<div class="smartphone-header-row">
+  <div class="smartphone-header-text">
+    <h2 class="text-4xl md:text-5xl font-black tracking-tight text-white">1. Смартфон — Доверие</h2>
+    <p class="mt-2 text-lg italic text-slate-300">Снято мимоходом на ходу. Абсолютное отсутствие барьеров пафоса.</p>
+  </div>
+  <a class="smartphone-section-cta" href="#smartphone-builder">Собери свой промпт ↓</a>
+</div>
+
+<div class="smartphone-layout">
+<div class="smartphone-slideshow" id="smartphoneSlideshow" aria-label="Примеры изображений для раздела Смартфон">
+<div class="smartphone-slide active" data-camera="iphone" data-index="0">
+<img loading="lazy" decoding="async" alt="Смартфон — пример изображения 1" src="assets/iphone-1.png" data-full-src="assets/iphone-1.png"/>
+<div class="smartphone-slide-overlay">
+<button class="smartphone-slide-action" type="button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h3l2-2h6l2 2h3v12H4V7zm8 10a4 4 0 100-8 4 4 0 000 8z"/></svg>Открыть фото</button>
+<button class="smartphone-slide-action" type="button" onclick="openSmartphonePrompt(this)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg>Открыть промпт</button>
+</div>
+<div class="smartphone-slide-caption"><span>Смартфон / пример 1</span></div><button class="smartphone-prompt-link" type="button" data-camera="iphone" data-index="0" onclick="event.preventDefault(); event.stopPropagation(); openSmartphonePrompt(this);"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg> Открыть промпт</button>
+</div><div class="smartphone-slide" data-camera="iphone" data-index="1">
+<img loading="lazy" decoding="async" alt="Смартфон — пример изображения 2" src="assets/iphone-2.png" data-full-src="assets/iphone-2.png"/>
+<div class="smartphone-slide-overlay">
+<button class="smartphone-slide-action" type="button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h3l2-2h6l2 2h3v12H4V7zm8 10a4 4 0 100-8 4 4 0 000 8z"/></svg>Открыть фото</button>
+<button class="smartphone-slide-action" type="button" onclick="openSmartphonePrompt(this)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg>Открыть промпт</button>
+</div>
+<div class="smartphone-slide-caption"><span>Смартфон / пример 2</span></div><button class="smartphone-prompt-link" type="button" data-camera="iphone" data-index="1" onclick="event.preventDefault(); event.stopPropagation(); openSmartphonePrompt(this);"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg> Открыть промпт</button>
+</div><div class="smartphone-slide" data-camera="iphone" data-index="2">
+<img loading="lazy" decoding="async" alt="Смартфон — пример изображения 3" src="assets/iphone-3.png" data-full-src="assets/iphone-3.png"/>
+<div class="smartphone-slide-overlay">
+<button class="smartphone-slide-action" type="button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h3l2-2h6l2 2h3v12H4V7zm8 10a4 4 0 100-8 4 4 0 000 8z"/></svg>Открыть фото</button>
+<button class="smartphone-slide-action" type="button" onclick="openSmartphonePrompt(this)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg>Открыть промпт</button>
+</div>
+<div class="smartphone-slide-caption"><span>Смартфон / пример 3</span></div><button class="smartphone-prompt-link" type="button" data-camera="iphone" data-index="2" onclick="event.preventDefault(); event.stopPropagation(); openSmartphonePrompt(this);"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg> Открыть промпт</button>
+</div>
+<div class="smartphone-slide-nav" aria-label="Навигация по слайдам">
+<button class="smartphone-dot active" type="button" onclick="setSmartphoneSlide(0)" aria-label="Слайд 1"></button>
+<button class="smartphone-dot" type="button" onclick="setSmartphoneSlide(1)" aria-label="Слайд 2"></button>
+<button class="smartphone-dot" type="button" onclick="setSmartphoneSlide(2)" aria-label="Слайд 3"></button>
+</div>
+</div>
+<div class="smartphone-reco">
+
+<div class="smartphone-reco-list mt-4 text-sm text-slate-300 leading-relaxed">
+<div class="smartphone-reco-item"><strong>Когда использовать</strong>Когда нужно, чтобы изображение выглядело естественно, как случайный кадр из жизни, а не постановочная съёмка.</div>
+<div class="smartphone-reco-item"><strong>Какой эффект</strong>Создаёт ощущение реальности, живого момента, личного присутствия и доверия. Такие кадры воспринимаются как честные и знакомые.</div>
+<div class="smartphone-reco-item"><strong>Подходит для</strong>Lifestyle, travel, блогерский контент, сторис, бэкстейдж, уличные сцены, репортажность, псевдо-UGC реклама.</div>
+<div class="smartphone-reco-item"><strong>Когда не использовать</strong>Когда нужен дорогой глянцевый вид, luxury-эстетика, fashion editorial, премиальная реклама или идеально выверенная киношная картинка.</div>
+</div>
+</div>
+</div>
+
+<div class="prompt-builder space-y-4 mt-8" id="smartphone-builder">
+<div>
+<h3 class="smartphone-builder-title">Конструктор промпта для генерации в стиле смартфона</h3>
+<p class="text-sm text-slate-400 mt-2 leading-relaxed">Нажимайте на пункты — случайные варианты будут собираться в готовый промпт для генерации.</p>
+</div>
+<div class="prompt-chip-grid" aria-label="Конструктор промпта для смартфона">
+<button class="prompt-chip" type="button" data-prompt-part="genre">Жанр<small>что это за картинка</small></button>
+<button class="prompt-chip" type="button" data-prompt-part="subject">Субъект<small>кто или что в кадре</small></button>
+<button class="prompt-chip" type="button" data-prompt-part="light">Свет<small>как освещена сцена</small></button>
+<button class="prompt-chip" type="button" data-prompt-part="environment">Среда<small>где происходит действие</small></button>
+<button class="prompt-chip" type="button" data-prompt-part="camera">Камера<small>эпоха смартфона</small></button>
+<button class="prompt-chip" type="button" data-prompt-part="optics">Оптика<small>мобильный взгляд</small></button>
+<button class="prompt-chip" type="button" data-prompt-part="textures">Текстуры<small>что делает кадр живым</small></button>
+<button class="prompt-chip" type="button" data-prompt-part="motion">Движение<small>ощущение момента</small></button>
+<button class="prompt-chip" type="button" data-prompt-part="color">Цвет<small>настроение картинки</small></button>
+<button class="prompt-chip" type="button" data-prompt-part="defects">Дефекты<small>реализм и несовершенства</small></button>
+</div>
+<div class="space-y-2 relative">
+<div class="mono prompt-output text-xs p-4 bg-slate-950/80 rounded-xl border border-slate-900 text-slate-300 leading-relaxed select-all shadow-inner" id="smartphonePromptOutput">Нажмите на пункты выше, чтобы собрать готовый smartphone-style промпт для генерации.</div>
+<div class="absolute top-3 right-3 flex gap-2 prompt-icon-actions">
+<button class="prompt-icon-btn" id="smartphoneCopyBtn" type="button" onclick="copySmartphonePrompt()" title="Скопировать промпт" aria-label="Скопировать промпт">
+<svg class="copy-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="8" y="8" width="11" height="11" rx="2.5" stroke-width="2"></rect><path d="M5 15V7.5A2.5 2.5 0 0 1 7.5 5H15" stroke-width="2" stroke-linecap="round"></path></svg>
+<svg class="check-icon hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M5 13l4 4L19 7" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</button>
+<button class="prompt-icon-btn" type="button" onclick="resetSmartphonePrompt()" title="Очистить промпт" aria-label="Очистить промпт">
+<svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M4 7h16M10 11v5M14 11v5M6 7l1 12h10l1-12M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</button>
+</div>
+</div>
+</div>
+
+</section>
+<section class="glass-card rounded-3xl p-6 md:p-10 space-y-8 relative" id="canon">
+<div class="camera-header-row">
+  <div class="camera-header-text">
+    <h2 class="text-4xl md:text-5xl font-black tracking-tight text-white">2. Canon — Коммерция</h2>
+    <p class="mt-2 text-lg italic text-slate-300">Чистая классика глянца, мягкие тени и коммерчески выигрышный скинтон.</p>
+  </div>
+  <a class="camera-section-cta" href="#canon-builder">Собери Canon-промпт ↓</a>
+</div>
+<div class="camera-layout">
+<div class="camera-slideshow" data-camera="canon" aria-label="Примеры изображений для раздела 2. Canon — Коммерция">
+<div class="camera-slide active" data-camera="canon" data-index="0">
+<img loading="lazy" decoding="async" alt="2. Canon — Коммерция: пример изображения 1" src="assets/canon-1.png" data-full-src="assets/canon-1.png"/>
+<div class="camera-slide-overlay">
+<button class="camera-slide-action" type="button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h3l2-2h6l2 2h3v12H4V7zm8 10a4 4 0 100-8 4 4 0 000 8z"/></svg>Открыть фото</button>
+<button class="camera-slide-action" type="button" onclick="openCameraPrompt('canon', 0)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg>Открыть промпт</button>
+</div>
+<div class="camera-slide-caption"><span>2. Canon / пример 1</span></div><button class="camera-prompt-link" type="button" data-camera="canon" data-index="0"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg> Открыть промпт</button>
+</div><div class="camera-slide" data-camera="canon" data-index="1">
+<img loading="lazy" decoding="async" alt="2. Canon — Коммерция: пример изображения 2" src="assets/canon-2.png" data-full-src="assets/canon-2.png"/>
+<div class="camera-slide-overlay">
+<button class="camera-slide-action" type="button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h3l2-2h6l2 2h3v12H4V7zm8 10a4 4 0 100-8 4 4 0 000 8z"/></svg>Открыть фото</button>
+<button class="camera-slide-action" type="button" onclick="openCameraPrompt('canon', 1)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg>Открыть промпт</button>
+</div>
+<div class="camera-slide-caption"><span>2. Canon / пример 2</span></div><button class="camera-prompt-link" type="button" data-camera="canon" data-index="1"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg> Открыть промпт</button>
+</div><div class="camera-slide" data-camera="canon" data-index="2">
+<img loading="lazy" decoding="async" alt="2. Canon — Коммерция: пример изображения 3" src="assets/canon-3.png" data-full-src="assets/canon-3.png"/>
+<div class="camera-slide-overlay">
+<button class="camera-slide-action" type="button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h3l2-2h6l2 2h3v12H4V7zm8 10a4 4 0 100-8 4 4 0 000 8z"/></svg>Открыть фото</button>
+<button class="camera-slide-action" type="button" onclick="openCameraPrompt('canon', 2)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg>Открыть промпт</button>
+</div>
+<div class="camera-slide-caption"><span>2. Canon / пример 3</span></div><button class="camera-prompt-link" type="button" data-camera="canon" data-index="2"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg> Открыть промпт</button>
+</div>
+<div class="camera-slide-nav" aria-label="Навигация по слайдам"><button class="camera-dot active" type="button" onclick="setCameraSlide('canon',0)" aria-label="Слайд 1"></button><button class="camera-dot" type="button" onclick="setCameraSlide('canon',1)" aria-label="Слайд 2"></button><button class="camera-dot" type="button" onclick="setCameraSlide('canon',2)" aria-label="Слайд 3"></button></div>
+</div>
+<div class="camera-reco"><div class="camera-reco-item"><strong>Когда использовать</strong>Когда нужен чистый, понятный, коммерческий кадр: красиво, аккуратно, без лишней авторской странности.</div><div class="camera-reco-item"><strong>Какой эффект</strong>Даёт мягкий рекламный вид, приятную кожу, тёплую картинку и ощущение профессиональной съёмки для бренда.</div><div class="camera-reco-item"><strong>Подходит для</strong>Портреты, lifestyle-реклама, beauty, семейные кадры, свадебная эстетика, коммерческий контент.</div><div class="camera-reco-item"><strong>Когда не использовать</strong>Когда нужен грубый документальный реализм, хаос, артхаус, грязная хроника или холодная индустриальная эстетика.</div></div>
+</div>
+<div class="prompt-builder space-y-4 mt-8" id="canon-builder" data-camera-builder="canon">
+<div>
+<h3 class="camera-builder-title">Конструктор промпта для генерации в стиле Canon</h3>
+<p class="text-sm text-slate-400 mt-2 leading-relaxed">Нажимайте на пункты — случайные варианты будут собираться в готовый промпт для генерации.</p>
+</div>
+<div class="prompt-chip-grid" aria-label="Конструктор промпта для 2. Canon — Коммерция">
+<button class="prompt-chip" type="button" data-prompt-part="genre">Жанр<small>что это за картинка</small></button><button class="prompt-chip" type="button" data-prompt-part="subject">Субъект<small>кто или что в кадре</small></button><button class="prompt-chip" type="button" data-prompt-part="light">Свет<small>как освещена сцена</small></button><button class="prompt-chip" type="button" data-prompt-part="environment">Среда<small>где происходит действие</small></button><button class="prompt-chip" type="button" data-prompt-part="camera">Камера<small>реальная камера</small></button><button class="prompt-chip" type="button" data-prompt-part="optics">Оптика<small>реальный объектив</small></button><button class="prompt-chip" type="button" data-prompt-part="textures">Текстуры<small>что делает кадр живым</small></button><button class="prompt-chip" type="button" data-prompt-part="motion">Движение<small>ощущение момента</small></button><button class="prompt-chip" type="button" data-prompt-part="color">Цвет<small>настроение картинки</small></button><button class="prompt-chip" type="button" data-prompt-part="defects">Дефекты<small>реализм и несовершенства</small></button>
+</div>
+<div class="space-y-2 relative">
+<div class="absolute top-3 right-3 flex gap-2 prompt-icon-actions">
+<button class="prompt-icon-btn" id="canonCopyBtn" type="button" onclick="copyCameraBuilderPrompt('canon')" title="Скопировать промпт" aria-label="Скопировать промпт"><svg class="copy-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="8" y="8" width="11" height="11" rx="2.5" stroke-width="2"></rect><path d="M5 15V7.5A2.5 2.5 0 0 1 7.5 5H15" stroke-width="2" stroke-linecap="round"></path></svg><svg class="check-icon hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M5 13l4 4L19 7" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+<button class="prompt-icon-btn" type="button" onclick="resetCameraBuilder('canon')" title="Очистить промпт" aria-label="Очистить промпт"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M4 7h16M10 11v5M14 11v5M6 7l1 12h10l1-12M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+</div>
+<div class="mono prompt-output text-xs p-4 bg-slate-950/80 rounded-xl border border-slate-900 text-slate-300 leading-relaxed select-all shadow-inner" id="canonPromptOutput">Нажмите на пункты выше, чтобы собрать готовый canon-style промпт для генерации.</div>
+</div>
+</div>
+</section>
+<section class="glass-card rounded-3xl p-6 md:p-10 space-y-8 relative" id="leica">
+<div class="camera-header-row">
+  <div class="camera-header-text">
+    <h2 class="text-4xl md:text-5xl font-black tracking-tight text-white">3. Leica — Момент</h2>
+    <p class="mt-2 text-lg italic text-slate-300">Искусство «решающего момента», легендарный резкий микроконтраст и дух истории.</p>
+  </div>
+  <a class="camera-section-cta" href="#leica-builder">Собери Leica-промпт ↓</a>
+</div>
+<div class="camera-layout">
+<div class="camera-slideshow" data-camera="leica" aria-label="Примеры изображений для раздела 3. Leica — Момент">
+<div class="camera-slide active" data-camera="leica" data-index="0">
+<img loading="lazy" decoding="async" alt="3. Leica — Момент: пример изображения 1" src="assets/leica-1.png" data-full-src="assets/leica-1.png"/>
+<div class="camera-slide-overlay">
+<button class="camera-slide-action" type="button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h3l2-2h6l2 2h3v12H4V7zm8 10a4 4 0 100-8 4 4 0 000 8z"/></svg>Открыть фото</button>
+<button class="camera-slide-action" type="button" onclick="openCameraPrompt('leica', 0)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg>Открыть промпт</button>
+</div>
+<div class="camera-slide-caption"><span>3. Leica / пример 1</span></div><button class="camera-prompt-link" type="button" data-camera="leica" data-index="0"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg> Открыть промпт</button>
+</div><div class="camera-slide" data-camera="leica" data-index="1">
+<img loading="lazy" decoding="async" alt="3. Leica — Момент: пример изображения 2" src="assets/leica-2.png" data-full-src="assets/leica-2.png"/>
+<div class="camera-slide-overlay">
+<button class="camera-slide-action" type="button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h3l2-2h6l2 2h3v12H4V7zm8 10a4 4 0 100-8 4 4 0 000 8z"/></svg>Открыть фото</button>
+<button class="camera-slide-action" type="button" onclick="openCameraPrompt('leica', 1)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg>Открыть промпт</button>
+</div>
+<div class="camera-slide-caption"><span>3. Leica / пример 2</span></div><button class="camera-prompt-link" type="button" data-camera="leica" data-index="1"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg> Открыть промпт</button>
+</div><div class="camera-slide" data-camera="leica" data-index="2">
+<img loading="lazy" decoding="async" alt="3. Leica — Момент: пример изображения 3" src="assets/leica-3.png" data-full-src="assets/leica-3.png"/>
+<div class="camera-slide-overlay">
+<button class="camera-slide-action" type="button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h3l2-2h6l2 2h3v12H4V7zm8 10a4 4 0 100-8 4 4 0 000 8z"/></svg>Открыть фото</button>
+<button class="camera-slide-action" type="button" onclick="openCameraPrompt('leica', 2)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg>Открыть промпт</button>
+</div>
+<div class="camera-slide-caption"><span>3. Leica / пример 3</span></div><button class="camera-prompt-link" type="button" data-camera="leica" data-index="2"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg> Открыть промпт</button>
+</div>
+<div class="camera-slide-nav" aria-label="Навигация по слайдам"><button class="camera-dot active" type="button" onclick="setCameraSlide('leica',0)" aria-label="Слайд 1"></button><button class="camera-dot" type="button" onclick="setCameraSlide('leica',1)" aria-label="Слайд 2"></button><button class="camera-dot" type="button" onclick="setCameraSlide('leica',2)" aria-label="Слайд 3"></button></div>
+</div>
+<div class="camera-reco"><div class="camera-reco-item"><strong>Когда использовать</strong>Когда важен живой момент, человеческая эмоция и ощущение уличной фотографии, а не идеальная постановка.</div><div class="camera-reco-item"><strong>Какой эффект</strong>Даёт честный, наблюдательный кадр с благородной резкостью, характером и лёгким ощущением истории.</div><div class="camera-reco-item"><strong>Подходит для</strong>Street, документальный портрет, чёрно-белая эстетика, путешествия, репортаж, камерные городские сцены.</div><div class="camera-reco-item"><strong>Когда не использовать</strong>When you need smooth beauty retouching, bright advertising, fantasy 3D rendering or a sterile luxury look.</div></div>
+</div>
+<div class="prompt-builder space-y-4 mt-8" id="leica-builder" data-camera-builder="leica">
+<div>
+<h3 class="camera-builder-title">Конструктор промпта для генерации в стиле Leica</h3>
+<p class="text-sm text-slate-400 mt-2 leading-relaxed">Нажимайте на пункты — случайные варианты будут собираться в готовый промпт для генерации.</p>
+</div>
+<div class="prompt-chip-grid" aria-label="Конструктор промпта для 3. Leica — Момент">
+<button class="prompt-chip" type="button" data-prompt-part="genre">Жанр<small>что это за картинка</small></button><button class="prompt-chip" type="button" data-prompt-part="subject">Субъект<small>кто или что в кадре</small></button><button class="prompt-chip" type="button" data-prompt-part="light">Свет<small>как освещена сцена</small></button><button class="prompt-chip" type="button" data-prompt-part="environment">Среда<small>где происходит действие</small></button><button class="prompt-chip" type="button" data-prompt-part="camera">Камера<small>реальная камера</small></button><button class="prompt-chip" type="button" data-prompt-part="optics">Оптика<small>реальный объектив</small></button><button class="prompt-chip" type="button" data-prompt-part="textures">Текстуры<small>что делает кадр живым</small></button><button class="prompt-chip" type="button" data-prompt-part="motion">Движение<small>ощущение момента</small></button><button class="prompt-chip" type="button" data-prompt-part="color">Цвет<small>настроение картинки</small></button><button class="prompt-chip" type="button" data-prompt-part="defects">Дефекты<small>реализм и несовершенства</small></button>
+</div>
+<div class="space-y-2 relative">
+<div class="absolute top-3 right-3 flex gap-2 prompt-icon-actions">
+<button class="prompt-icon-btn" id="leicaCopyBtn" type="button" onclick="copyCameraBuilderPrompt('leica')" title="Скопировать промпт" aria-label="Скопировать промпт"><svg class="copy-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="8" y="8" width="11" height="11" rx="2.5" stroke-width="2"></rect><path d="M5 15V7.5A2.5 2.5 0 0 1 7.5 5H15" stroke-width="2" stroke-linecap="round"></path></svg><svg class="check-icon hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M5 13l4 4L19 7" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+<button class="prompt-icon-btn" type="button" onclick="resetCameraBuilder('leica')" title="Очистить промпт" aria-label="Очистить промпт"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M4 7h16M10 11v5M14 11v5M6 7l1 12h10l1-12M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+</div>
+<div class="mono prompt-output text-xs p-4 bg-slate-950/80 rounded-xl border border-slate-900 text-slate-300 leading-relaxed select-all shadow-inner" id="leicaPromptOutput">Нажмите на пункты выше, чтобы собрать готовый leica-style промпт для генерации.</div>
+</div>
+</div>
+</section>
+<section class="glass-card rounded-3xl p-6 md:p-10 space-y-8 relative" id="panavision">
+<div class="camera-header-row">
+  <div class="camera-header-text">
+    <h2 class="text-4xl md:text-5xl font-black tracking-tight text-white">4. Panavision — Постановка</h2>
+    <p class="mt-2 text-lg italic text-slate-300">Большая киношная сцена, тщательно выстроенный кадр и ощущение дорогого производства.</p>
+  </div>
+  <a class="camera-section-cta" href="#panavision-builder">Собери Panavision-промпт ↓</a>
+</div>
+<div class="camera-layout">
+<div class="camera-slideshow" data-camera="panavision" aria-label="Примеры изображений для раздела 4. Panavision — Постановка">
+<div class="camera-slide active" data-camera="panavision" data-index="0">
+<img loading="lazy" decoding="async" alt="4. Panavision — Постановка: пример изображения 1" src="assets/panavision-1.png" data-full-src="assets/panavision-1.png"/>
+<div class="camera-slide-overlay">
+<button class="camera-slide-action" type="button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h3l2-2h6l2 2h3v12H4V7zm8 10a4 4 0 100-8 4 4 0 000 8z"/></svg>Открыть фото</button>
+<button class="camera-slide-action" type="button" onclick="openCameraPrompt('panavision', 0)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg>Открыть промпт</button>
+</div>
+<div class="camera-slide-caption"><span>4. Panavision / пример 1</span></div><button class="camera-prompt-link" type="button" data-camera="panavision" data-index="0"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg> Открыть промпт</button>
+</div><div class="camera-slide" data-camera="panavision" data-index="1">
+<img loading="lazy" decoding="async" alt="4. Panavision — Постановка: пример изображения 2" src="assets/panavision-2.png" data-full-src="assets/panavision-2.png"/>
+<div class="camera-slide-overlay">
+<button class="camera-slide-action" type="button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h3l2-2h6l2 2h3v12H4V7zm8 10a4 4 0 100-8 4 4 0 000 8z"/></svg>Открыть фото</button>
+<button class="camera-slide-action" type="button" onclick="openCameraPrompt('panavision', 1)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg>Открыть промпт</button>
+</div>
+<div class="camera-slide-caption"><span>4. Panavision / пример 2</span></div><button class="camera-prompt-link" type="button" data-camera="panavision" data-index="1"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg> Открыть промпт</button>
+</div><div class="camera-slide" data-camera="panavision" data-index="2">
+<img loading="lazy" decoding="async" alt="4. Panavision — Постановка: пример изображения 3" src="assets/panavision-3.png" data-full-src="assets/panavision-3.png"/>
+<div class="camera-slide-overlay">
+<button class="camera-slide-action" type="button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h3l2-2h6l2 2h3v12H4V7zm8 10a4 4 0 100-8 4 4 0 000 8z"/></svg>Открыть фото</button>
+<button class="camera-slide-action" type="button" onclick="openCameraPrompt('panavision', 2)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg>Открыть промпт</button>
+</div>
+<div class="camera-slide-caption"><span>4. Panavision / пример 3</span></div><button class="camera-prompt-link" type="button" data-camera="panavision" data-index="2"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg> Открыть промпт</button>
+</div>
+<div class="camera-slide-nav" aria-label="Навигация по слайдам"><button class="camera-dot active" type="button" onclick="setCameraSlide('panavision',0)" aria-label="Слайд 1"></button><button class="camera-dot" type="button" onclick="setCameraSlide('panavision',1)" aria-label="Слайд 2"></button><button class="camera-dot" type="button" onclick="setCameraSlide('panavision',2)" aria-label="Слайд 3"></button></div>
+</div>
+<div class="camera-reco"><div class="camera-reco-item"><strong>Когда использовать</strong>Когда нужна постановка: актёры, сцена, драматичный свет и ощущение большого кино.</div><div class="camera-reco-item"><strong>Какой эффект</strong>Даёт кадру масштаб, кинематографичность, контролируемую композицию и дорогой production value.</div><div class="camera-reco-item"><strong>Подходит для</strong>Кино-стиллы, трейлерные кадры, драма, фантастика, реклама, музыкальные клипы, fashion с нарративом.</div><div class="camera-reco-item"><strong>Когда не использовать</strong>Когда нужен бытовой реализм, случайность, UGC, репортаж или ощущение снятого на телефон момента.</div></div>
+</div>
+<div class="prompt-builder space-y-4 mt-8" id="panavision-builder" data-camera-builder="panavision">
+<div>
+<h3 class="camera-builder-title">Конструктор промпта для генерации в стиле Panavision</h3>
+<p class="text-sm text-slate-400 mt-2 leading-relaxed">Нажимайте на пункты — случайные варианты будут собираться в готовый промпт для генерации.</p>
+</div>
+<div class="prompt-chip-grid" aria-label="Конструктор промпта для 4. Panavision — Постановка">
+<button class="prompt-chip" type="button" data-prompt-part="genre">Жанр<small>что это за картинка</small></button><button class="prompt-chip" type="button" data-prompt-part="subject">Субъект<small>кто или что в кадре</small></button><button class="prompt-chip" type="button" data-prompt-part="light">Свет<small>как освещена сцена</small></button><button class="prompt-chip" type="button" data-prompt-part="environment">Среда<small>где происходит действие</small></button><button class="prompt-chip" type="button" data-prompt-part="camera">Камера<small>реальная камера</small></button><button class="prompt-chip" type="button" data-prompt-part="optics">Оптика<small>реальный объектив</small></button><button class="prompt-chip" type="button" data-prompt-part="textures">Текстуры<small>что делает кадр живым</small></button><button class="prompt-chip" type="button" data-prompt-part="motion">Движение<small>ощущение момента</small></button><button class="prompt-chip" type="button" data-prompt-part="color">Цвет<small>настроение картинки</small></button><button class="prompt-chip" type="button" data-prompt-part="defects">Дефекты<small>реализм и несовершенства</small></button>
+</div>
+<div class="space-y-2 relative">
+<div class="absolute top-3 right-3 flex gap-2 prompt-icon-actions">
+<button class="prompt-icon-btn" id="panavisionCopyBtn" type="button" onclick="copyCameraBuilderPrompt('panavision')" title="Скопировать промпт" aria-label="Скопировать промпт"><svg class="copy-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="8" y="8" width="11" height="11" rx="2.5" stroke-width="2"></rect><path d="M5 15V7.5A2.5 2.5 0 0 1 7.5 5H15" stroke-width="2" stroke-linecap="round"></path></svg><svg class="check-icon hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M5 13l4 4L19 7" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+<button class="prompt-icon-btn" type="button" onclick="resetCameraBuilder('panavision')" title="Очистить промпт" aria-label="Очистить промпт"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M4 7h16M10 11v5M14 11v5M6 7l1 12h10l1-12M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+</div>
+<div class="mono prompt-output text-xs p-4 bg-slate-950/80 rounded-xl border border-slate-900 text-slate-300 leading-relaxed select-all shadow-inner" id="panavisionPromptOutput">Нажмите на пункты выше, чтобы собрать готовый panavision-style промпт для генерации.</div>
+</div>
+</div>
+</section>
+<section class="glass-card rounded-3xl p-6 md:p-10 space-y-8 relative" id="nikon">
+<div class="camera-header-row">
+  <div class="camera-header-text">
+    <h2 class="text-4xl md:text-5xl font-black tracking-tight text-white">5. Nikon — Реализм</h2>
+    <p class="mt-2 text-lg italic text-slate-300">Надёжная честная картинка, резкость, естественная среда и ощущение настоящей фотографии.</p>
+  </div>
+  <a class="camera-section-cta" href="#nikon-builder">Собери Nikon-промпт ↓</a>
+</div>
+<div class="camera-layout">
+<div class="camera-slideshow" data-camera="nikon" aria-label="Примеры изображений для раздела 5. Nikon — Реализм">
+<div class="camera-slide active" data-camera="nikon" data-index="0">
+<img loading="lazy" decoding="async" alt="5. Nikon — Реализм: пример изображения 1" src="assets/nikon-1.png" data-full-src="assets/nikon-1.png"/>
+<div class="camera-slide-overlay">
+<button class="camera-slide-action" type="button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h3l2-2h6l2 2h3v12H4V7zm8 10a4 4 0 100-8 4 4 0 000 8z"/></svg>Открыть фото</button>
+<button class="camera-slide-action" type="button" onclick="openCameraPrompt('nikon', 0)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg>Открыть промпт</button>
+</div>
+<div class="camera-slide-caption"><span>5. Nikon / пример 1</span></div><button class="camera-prompt-link" type="button" data-camera="nikon" data-index="0"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg> Открыть промпт</button>
+</div><div class="camera-slide" data-camera="nikon" data-index="1">
+<img loading="lazy" decoding="async" alt="5. Nikon — Реализм: пример изображения 2" src="assets/nikon-2.png" data-full-src="assets/nikon-2.png"/>
+<div class="camera-slide-overlay">
+<button class="camera-slide-action" type="button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h3l2-2h6l2 2h3v12H4V7zm8 10a4 4 0 100-8 4 4 0 000 8z"/></svg>Открыть фото</button>
+<button class="camera-slide-action" type="button" onclick="openCameraPrompt('nikon', 1)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg>Открыть промпт</button>
+</div>
+<div class="camera-slide-caption"><span>5. Nikon / пример 2</span></div><button class="camera-prompt-link" type="button" data-camera="nikon" data-index="1"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg> Открыть промпт</button>
+</div><div class="camera-slide" data-camera="nikon" data-index="2">
+<img loading="lazy" decoding="async" alt="5. Nikon — Реализм: пример изображения 3" src="assets/nikon-3.png" data-full-src="assets/nikon-3.png"/>
+<div class="camera-slide-overlay">
+<button class="camera-slide-action" type="button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h3l2-2h6l2 2h3v12H4V7zm8 10a4 4 0 100-8 4 4 0 000 8z"/></svg>Открыть фото</button>
+<button class="camera-slide-action" type="button" onclick="openCameraPrompt('nikon', 2)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg>Открыть промпт</button>
+</div>
+<div class="camera-slide-caption"><span>5. Nikon / пример 3</span></div><button class="camera-prompt-link" type="button" data-camera="nikon" data-index="2"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg> Открыть промпт</button>
+</div>
+<div class="camera-slide-nav" aria-label="Навигация по слайдам"><button class="camera-dot active" type="button" onclick="setCameraSlide('nikon',0)" aria-label="Слайд 1"></button><button class="camera-dot" type="button" onclick="setCameraSlide('nikon',1)" aria-label="Слайд 2"></button><button class="camera-dot" type="button" onclick="setCameraSlide('nikon',2)" aria-label="Слайд 3"></button></div>
+</div>
+<div class="camera-reco"><div class="camera-reco-item"><strong>Когда использовать</strong>Когда нужна реалистичная фотография без глянцевого перегиба и без явной киношной стилизации.</div><div class="camera-reco-item"><strong>Какой эффект</strong>Даёт чистую детализацию, натуральные цвета, уверенную резкость и ощущение настоящего фотоаппарата.</div><div class="camera-reco-item"><strong>Подходит для</strong>Репортаж, спорт, travel, природа, портреты, документальная реклама, события, реалистичные сцены.</div><div class="camera-reco-item"><strong>Когда не использовать</strong>Когда нужен намеренно искусственный fashion, сильный сюрреализм, грязный lo-fi или киношный анаморфный look.</div></div>
+</div>
+<div class="prompt-builder space-y-4 mt-8" id="nikon-builder" data-camera-builder="nikon">
+<div>
+<h3 class="camera-builder-title">Конструктор промпта для генерации в стиле Nikon</h3>
+<p class="text-sm text-slate-400 mt-2 leading-relaxed">Нажимайте на пункты — случайные варианты будут собираться в готовый промпт для генерации.</p>
+</div>
+<div class="prompt-chip-grid" aria-label="Конструктор промпта для 5. Nikon — Реализм">
+<button class="prompt-chip" type="button" data-prompt-part="genre">Жанр<small>что это за картинка</small></button><button class="prompt-chip" type="button" data-prompt-part="subject">Субъект<small>кто или что в кадре</small></button><button class="prompt-chip" type="button" data-prompt-part="light">Свет<small>как освещена сцена</small></button><button class="prompt-chip" type="button" data-prompt-part="environment">Среда<small>где происходит действие</small></button><button class="prompt-chip" type="button" data-prompt-part="camera">Камера<small>реальная камера</small></button><button class="prompt-chip" type="button" data-prompt-part="optics">Оптика<small>реальный объектив</small></button><button class="prompt-chip" type="button" data-prompt-part="textures">Текстуры<small>что делает кадр живым</small></button><button class="prompt-chip" type="button" data-prompt-part="motion">Движение<small>ощущение момента</small></button><button class="prompt-chip" type="button" data-prompt-part="color">Цвет<small>настроение картинки</small></button><button class="prompt-chip" type="button" data-prompt-part="defects">Дефекты<small>реализм и несовершенства</small></button>
+</div>
+<div class="space-y-2 relative">
+<div class="absolute top-3 right-3 flex gap-2 prompt-icon-actions">
+<button class="prompt-icon-btn" id="nikonCopyBtn" type="button" onclick="copyCameraBuilderPrompt('nikon')" title="Скопировать промпт" aria-label="Скопировать промпт"><svg class="copy-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="8" y="8" width="11" height="11" rx="2.5" stroke-width="2"></rect><path d="M5 15V7.5A2.5 2.5 0 0 1 7.5 5H15" stroke-width="2" stroke-linecap="round"></path></svg><svg class="check-icon hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M5 13l4 4L19 7" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+<button class="prompt-icon-btn" type="button" onclick="resetCameraBuilder('nikon')" title="Очистить промпт" aria-label="Очистить промпт"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M4 7h16M10 11v5M14 11v5M6 7l1 12h10l1-12M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+</div>
+<div class="mono prompt-output text-xs p-4 bg-slate-950/80 rounded-xl border border-slate-900 text-slate-300 leading-relaxed select-all shadow-inner" id="nikonPromptOutput">Нажмите на пункты выше, чтобы собрать готовый nikon-style промпт для генерации.</div>
+</div>
+</div>
+</section>
+<section class="glass-card rounded-3xl p-6 md:p-10 space-y-8 relative" id="arri">
+<div class="camera-header-row">
+  <div class="camera-header-text">
+    <h2 class="text-4xl md:text-5xl font-black tracking-tight text-white">6. ARRI Alexa — Кино</h2>
+    <p class="mt-2 text-lg italic text-slate-300">Мягкий highlight roll-off, благородная кожа и тот самый современный киношный диапазон.</p>
+  </div>
+  <a class="camera-section-cta" href="#arri-builder">Собери ARRI-промпт ↓</a>
+</div>
+<div class="camera-layout">
+<div class="camera-slideshow" data-camera="arri" aria-label="Примеры изображений для раздела 6. ARRI Alexa — Кино">
+<div class="camera-slide active" data-camera="arri" data-index="0">
+<img loading="lazy" decoding="async" alt="6. ARRI Alexa — Кино: пример изображения 1" src="assets/arri-1.png" data-full-src="assets/arri-1.png"/>
+<div class="camera-slide-overlay">
+<button class="camera-slide-action" type="button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h3l2-2h6l2 2h3v12H4V7zm8 10a4 4 0 100-8 4 4 0 000 8z"/></svg>Открыть фото</button>
+<button class="camera-slide-action" type="button" onclick="openCameraPrompt('arri', 0)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg>Открыть промпт</button>
+</div>
+<div class="camera-slide-caption"><span>6. ARRI Alexa / пример 1</span></div><button class="camera-prompt-link" type="button" data-camera="arri" data-index="0"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg> Открыть промпт</button>
+</div><div class="camera-slide" data-camera="arri" data-index="1">
+<img loading="lazy" decoding="async" alt="6. ARRI Alexa — Кино: пример изображения 2" src="assets/arri-2.png" data-full-src="assets/arri-2.png"/>
+<div class="camera-slide-overlay">
+<button class="camera-slide-action" type="button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h3l2-2h6l2 2h3v12H4V7zm8 10a4 4 0 100-8 4 4 0 000 8z"/></svg>Открыть фото</button>
+<button class="camera-slide-action" type="button" onclick="openCameraPrompt('arri', 1)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg>Открыть промпт</button>
+</div>
+<div class="camera-slide-caption"><span>6. ARRI Alexa / пример 2</span></div><button class="camera-prompt-link" type="button" data-camera="arri" data-index="1"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg> Открыть промпт</button>
+</div><div class="camera-slide" data-camera="arri" data-index="2">
+<img loading="lazy" decoding="async" alt="6. ARRI Alexa — Кино: пример изображения 3" src="assets/arri-3.png" data-full-src="assets/arri-3.png"/>
+<div class="camera-slide-overlay">
+<button class="camera-slide-action" type="button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h3l2-2h6l2 2h3v12H4V7zm8 10a4 4 0 100-8 4 4 0 000 8z"/></svg>Открыть фото</button>
+<button class="camera-slide-action" type="button" onclick="openCameraPrompt('arri', 2)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg>Открыть промпт</button>
+</div>
+<div class="camera-slide-caption"><span>6. ARRI Alexa / пример 3</span></div><button class="camera-prompt-link" type="button" data-camera="arri" data-index="2"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg> Открыть промпт</button>
+</div>
+<div class="camera-slide-nav" aria-label="Навигация по слайдам"><button class="camera-dot active" type="button" onclick="setCameraSlide('arri',0)" aria-label="Слайд 1"></button><button class="camera-dot" type="button" onclick="setCameraSlide('arri',1)" aria-label="Слайд 2"></button><button class="camera-dot" type="button" onclick="setCameraSlide('arri',2)" aria-label="Слайд 3"></button></div>
+</div>
+<div class="camera-reco"><div class="camera-reco-item"><strong>Когда использовать</strong>Когда нужно ощущение настоящего кино: мягкий свет, живая кожа, объём и аккуратная драматургия кадра.</div><div class="camera-reco-item"><strong>Какой эффект</strong>Даёт кинематографичный динамический диапазон, мягкие пересветы, дорогую цветопередачу и спокойный film still look.</div><div class="camera-reco-item"><strong>Подходит для</strong>Кино-кадры, сериалы, драма, музыкальные клипы, fashion film, premium advertising, атмосферные портреты.</div><div class="camera-reco-item"><strong>Когда не использовать</strong>Когда нужен телефонный реализм, резкий consumer look, хаотичный lo-fi или сухая каталожная предметка.</div></div>
+</div>
+<div class="prompt-builder space-y-4 mt-8" id="arri-builder" data-camera-builder="arri">
+<div>
+<h3 class="camera-builder-title">Конструктор промпта для генерации в стиле ARRI Alexa</h3>
+<p class="text-sm text-slate-400 mt-2 leading-relaxed">Нажимайте на пункты — случайные варианты будут собираться в готовый промпт для генерации.</p>
+</div>
+<div class="prompt-chip-grid" aria-label="Конструктор промпта для 6. ARRI Alexa — Кино">
+<button class="prompt-chip" type="button" data-prompt-part="genre">Жанр<small>что это за картинка</small></button><button class="prompt-chip" type="button" data-prompt-part="subject">Субъект<small>кто или что в кадре</small></button><button class="prompt-chip" type="button" data-prompt-part="light">Свет<small>как освещена сцена</small></button><button class="prompt-chip" type="button" data-prompt-part="environment">Среда<small>где происходит действие</small></button><button class="prompt-chip" type="button" data-prompt-part="camera">Камера<small>реальная камера</small></button><button class="prompt-chip" type="button" data-prompt-part="optics">Оптика<small>реальный объектив</small></button><button class="prompt-chip" type="button" data-prompt-part="textures">Текстуры<small>что делает кадр живым</small></button><button class="prompt-chip" type="button" data-prompt-part="motion">Движение<small>ощущение момента</small></button><button class="prompt-chip" type="button" data-prompt-part="color">Цвет<small>настроение картинки</small></button><button class="prompt-chip" type="button" data-prompt-part="defects">Дефекты<small>реализм и несовершенства</small></button>
+</div>
+<div class="space-y-2 relative">
+<div class="absolute top-3 right-3 flex gap-2 prompt-icon-actions">
+<button class="prompt-icon-btn" id="arriCopyBtn" type="button" onclick="copyCameraBuilderPrompt('arri')" title="Скопировать промпт" aria-label="Скопировать промпт"><svg class="copy-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="8" y="8" width="11" height="11" rx="2.5" stroke-width="2"></rect><path d="M5 15V7.5A2.5 2.5 0 0 1 7.5 5H15" stroke-width="2" stroke-linecap="round"></path></svg><svg class="check-icon hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M5 13l4 4L19 7" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+<button class="prompt-icon-btn" type="button" onclick="resetCameraBuilder('arri')" title="Очистить промпт" aria-label="Очистить промпт"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M4 7h16M10 11v5M14 11v5M6 7l1 12h10l1-12M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+</div>
+<div class="mono prompt-output text-xs p-4 bg-slate-950/80 rounded-xl border border-slate-900 text-slate-300 leading-relaxed select-all shadow-inner" id="arriPromptOutput">Нажмите на пункты выше, чтобы собрать готовый arri-style промпт для генерации.</div>
+</div>
+</div>
+</section>
+<section class="glass-card rounded-3xl p-6 md:p-10 space-y-8 relative" id="hasselblad">
+<div class="camera-header-row">
+  <div class="camera-header-text">
+    <h2 class="text-4xl md:text-5xl font-black tracking-tight text-white">7. Hasselblad — Статус</h2>
+    <p class="mt-2 text-lg italic text-slate-300">Средний формат, дорогой воздух, спокойствие и ощущение элитной визуальной уверенности.</p>
+  </div>
+  <a class="camera-section-cta" href="#hasselblad-builder">Собери Hasselblad-промпт ↓</a>
+</div>
+<div class="camera-layout">
+<div class="camera-slideshow" data-camera="hasselblad" aria-label="Примеры изображений для раздела 7. Hasselblad — Статус">
+<div class="camera-slide active" data-camera="hasselblad" data-index="0">
+<img loading="lazy" decoding="async" alt="7. Hasselblad — Статус: пример изображения 1" src="assets/hasselblad-1.png" data-full-src="assets/hasselblad-1.png"/>
+<div class="camera-slide-overlay">
+<button class="camera-slide-action" type="button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h3l2-2h6l2 2h3v12H4V7zm8 10a4 4 0 100-8 4 4 0 000 8z"/></svg>Открыть фото</button>
+<button class="camera-slide-action" type="button" onclick="openCameraPrompt('hasselblad', 0)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg>Открыть промпт</button>
+</div>
+<div class="camera-slide-caption"><span>7. Hasselblad / пример 1</span></div><button class="camera-prompt-link" type="button" data-camera="hasselblad" data-index="0"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg> Открыть промпт</button>
+</div><div class="camera-slide" data-camera="hasselblad" data-index="1">
+<img loading="lazy" decoding="async" alt="7. Hasselblad — Статус: пример изображения 2" src="assets/hasselblad-2.png" data-full-src="assets/hasselblad-2.png"/>
+<div class="camera-slide-overlay">
+<button class="camera-slide-action" type="button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h3l2-2h6l2 2h3v12H4V7zm8 10a4 4 0 100-8 4 4 0 000 8z"/></svg>Открыть фото</button>
+<button class="camera-slide-action" type="button" onclick="openCameraPrompt('hasselblad', 1)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg>Открыть промпт</button>
+</div>
+<div class="camera-slide-caption"><span>7. Hasselblad / пример 2</span></div><button class="camera-prompt-link" type="button" data-camera="hasselblad" data-index="1"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg> Открыть промпт</button>
+</div><div class="camera-slide" data-camera="hasselblad" data-index="2">
+<img loading="lazy" decoding="async" alt="7. Hasselblad — Статус: пример изображения 3" src="assets/hasselblad-3.png" data-full-src="assets/hasselblad-3.png"/>
+<div class="camera-slide-overlay">
+<button class="camera-slide-action" type="button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h3l2-2h6l2 2h3v12H4V7zm8 10a4 4 0 100-8 4 4 0 000 8z"/></svg>Открыть фото</button>
+<button class="camera-slide-action" type="button" onclick="openCameraPrompt('hasselblad', 2)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg>Открыть промпт</button>
+</div>
+<div class="camera-slide-caption"><span>7. Hasselblad / пример 3</span></div><button class="camera-prompt-link" type="button" data-camera="hasselblad" data-index="2"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg> Открыть промпт</button>
+</div>
+<div class="camera-slide-nav" aria-label="Навигация по слайдам"><button class="camera-dot active" type="button" onclick="setCameraSlide('hasselblad',0)" aria-label="Слайд 1"></button><button class="camera-dot" type="button" onclick="setCameraSlide('hasselblad',1)" aria-label="Слайд 2"></button><button class="camera-dot" type="button" onclick="setCameraSlide('hasselblad',2)" aria-label="Слайд 3"></button></div>
+</div>
+<div class="camera-reco"><div class="camera-reco-item"><strong>Когда использовать</strong>Когда нужно дорого, спокойно, статусно и визуально без суеты.</div><div class="camera-reco-item"><strong>Какой эффект</strong>Даёт ощущение премиального пространства, глубоких тонов, дорогих материалов и крупного формата.</div><div class="camera-reco-item"><strong>Подходит для</strong>Luxury, fashion editorials, architecture, premium portraits, jewelry, cars and high-end lifestyle imagery.</div><div class="camera-reco-item"><strong>Когда не использовать</strong>When you need a gritty street feel, fast reportage, phone-style spontaneity or deliberate chaos/lo-fi.</div></div>
+</div>
+<div class="prompt-builder space-y-4 mt-8" id="hasselblad-builder" data-camera-builder="hasselblad">
+<div>
+<h3 class="camera-builder-title">Конструктор промпта для генерации в стиле Hasselblad</h3>
+<p class="text-sm text-slate-400 mt-2 leading-relaxed">Нажимайте на пункты — случайные варианты будут собираться в готовый промпт для генерации.</p>
+</div>
+<div class="prompt-chip-grid" aria-label="Конструктор промпта для 7. Hasselblad — Статус">
+<button class="prompt-chip" type="button" data-prompt-part="genre">Жанр<small>что это за картинка</small></button><button class="prompt-chip" type="button" data-prompt-part="subject">Субъект<small>кто или что в кадре</small></button><button class="prompt-chip" type="button" data-prompt-part="light">Свет<small>как освещена сцена</small></button><button class="prompt-chip" type="button" data-prompt-part="environment">Среда<small>где происходит действие</small></button><button class="prompt-chip" type="button" data-prompt-part="camera">Камера<small>реальная камера</small></button><button class="prompt-chip" type="button" data-prompt-part="optics">Оптика<small>реальный объектив</small></button><button class="prompt-chip" type="button" data-prompt-part="textures">Текстуры<small>что делает кадр живым</small></button><button class="prompt-chip" type="button" data-prompt-part="motion">Движение<small>ощущение момента</small></button><button class="prompt-chip" type="button" data-prompt-part="color">Цвет<small>настроение картинки</small></button><button class="prompt-chip" type="button" data-prompt-part="defects">Дефекты<small>реализм и несовершенства</small></button>
+</div>
+<div class="space-y-2 relative">
+<div class="absolute top-3 right-3 flex gap-2 prompt-icon-actions">
+<button class="prompt-icon-btn" id="hasselbladCopyBtn" type="button" onclick="copyCameraBuilderPrompt('hasselblad')" title="Скопировать промпт" aria-label="Скопировать промпт"><svg class="copy-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="8" y="8" width="11" height="11" rx="2.5" stroke-width="2"></rect><path d="M5 15V7.5A2.5 2.5 0 0 1 7.5 5H15" stroke-width="2" stroke-linecap="round"></path></svg><svg class="check-icon hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M5 13l4 4L19 7" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+<button class="prompt-icon-btn" type="button" onclick="resetCameraBuilder('hasselblad')" title="Очистить промпт" aria-label="Очистить промпт"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M4 7h16M10 11v5M14 11v5M6 7l1 12h10l1-12M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+</div>
+<div class="mono prompt-output text-xs p-4 bg-slate-950/80 rounded-xl border border-slate-900 text-slate-300 leading-relaxed select-all shadow-inner" id="hasselbladPromptOutput">Нажмите на пункты выше, чтобы собрать готовый hasselblad-style промпт для генерации.</div>
+</div>
+</div>
+</section>
+<section class="glass-card rounded-3xl p-6 md:p-10 space-y-8 relative" id="imax">
+<div class="camera-header-row">
+  <div class="camera-header-text">
+    <h2 class="text-4xl md:text-5xl font-black tracking-tight text-white">8. IMAX — Масштаб</h2>
+    <p class="mt-2 text-lg italic text-slate-300">Ощущение гигантского кадра, пространства, высоты и события больше человеческого масштаба.</p>
+  </div>
+  <a class="camera-section-cta" href="#imax-builder">Собери IMAX-промпт ↓</a>
+</div>
+<div class="camera-layout">
+<div class="camera-slideshow" data-camera="imax" aria-label="Примеры изображений для раздела 8. IMAX — Масштаб">
+<div class="camera-slide active" data-camera="imax" data-index="0">
+<img loading="lazy" decoding="async" alt="8. IMAX — Масштаб: пример изображения 1" src="assets/imax-1.png" data-full-src="assets/imax-1.png"/>
+<div class="camera-slide-overlay">
+<button class="camera-slide-action" type="button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h3l2-2h6l2 2h3v12H4V7zm8 10a4 4 0 100-8 4 4 0 000 8z"/></svg>Открыть фото</button>
+<button class="camera-slide-action" type="button" onclick="openCameraPrompt('imax', 0)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg>Открыть промпт</button>
+</div>
+<div class="camera-slide-caption"><span>8. IMAX / пример 1</span></div><button class="camera-prompt-link" type="button" data-camera="imax" data-index="0"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg> Открыть промпт</button>
+</div><div class="camera-slide" data-camera="imax" data-index="1">
+<img loading="lazy" decoding="async" alt="8. IMAX — Масштаб: пример изображения 2" src="assets/imax-2.png" data-full-src="assets/imax-2.png"/>
+<div class="camera-slide-overlay">
+<button class="camera-slide-action" type="button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h3l2-2h6l2 2h3v12H4V7zm8 10a4 4 0 100-8 4 4 0 000 8z"/></svg>Открыть фото</button>
+<button class="camera-slide-action" type="button" onclick="openCameraPrompt('imax', 1)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg>Открыть промпт</button>
+</div>
+<div class="camera-slide-caption"><span>8. IMAX / пример 2</span></div><button class="camera-prompt-link" type="button" data-camera="imax" data-index="1"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg> Открыть промпт</button>
+</div><div class="camera-slide" data-camera="imax" data-index="2">
+<img loading="lazy" decoding="async" alt="8. IMAX — Масштаб: пример изображения 3" src="assets/imax-3.png" data-full-src="assets/imax-3.png"/>
+<div class="camera-slide-overlay">
+<button class="camera-slide-action" type="button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h3l2-2h6l2 2h3v12H4V7zm8 10a4 4 0 100-8 4 4 0 000 8z"/></svg>Открыть фото</button>
+<button class="camera-slide-action" type="button" onclick="openCameraPrompt('imax', 2)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg>Открыть промпт</button>
+</div>
+<div class="camera-slide-caption"><span>8. IMAX / пример 3</span></div><button class="camera-prompt-link" type="button" data-camera="imax" data-index="2"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg> Открыть промпт</button>
+</div>
+<div class="camera-slide-nav" aria-label="Навигация по слайдам"><button class="camera-dot active" type="button" onclick="setCameraSlide('imax',0)" aria-label="Слайд 1"></button><button class="camera-dot" type="button" onclick="setCameraSlide('imax',1)" aria-label="Слайд 2"></button><button class="camera-dot" type="button" onclick="setCameraSlide('imax',2)" aria-label="Слайд 3"></button></div>
+</div>
+<div class="camera-reco"><div class="camera-reco-item"><strong>Когда использовать</strong>Когда нужно чувство масштаба: огромные пространства, эпические сцены, природа, архитектура, событие.</div><div class="camera-reco-item"><strong>Какой эффект</strong>Делает кадр крупным, воздушным и зрелищным, как будто зритель стоит внутри большой сцены.</div><div class="camera-reco-item"><strong>Подходит для</strong>Эпик, природа, архитектура, sci-fi, большие города, приключения, крупные establishing shots.</div><div class="camera-reco-item"><strong>Когда не использовать</strong>Когда нужен интимный портрет, маленький бытовой момент, камерная драма или тесное пространство.</div></div>
+</div>
+<div class="prompt-builder space-y-4 mt-8" id="imax-builder" data-camera-builder="imax">
+<div>
+<h3 class="camera-builder-title">Конструктор промпта для генерации в стиле IMAX</h3>
+<p class="text-sm text-slate-400 mt-2 leading-relaxed">Нажимайте на пункты — случайные варианты будут собираться в готовый промпт для генерации.</p>
+</div>
+<div class="prompt-chip-grid" aria-label="Конструктор промпта для 8. IMAX — Масштаб">
+<button class="prompt-chip" type="button" data-prompt-part="genre">Жанр<small>что это за картинка</small></button><button class="prompt-chip" type="button" data-prompt-part="subject">Субъект<small>кто или что в кадре</small></button><button class="prompt-chip" type="button" data-prompt-part="light">Свет<small>как освещена сцена</small></button><button class="prompt-chip" type="button" data-prompt-part="environment">Среда<small>где происходит действие</small></button><button class="prompt-chip" type="button" data-prompt-part="camera">Камера<small>реальная камера</small></button><button class="prompt-chip" type="button" data-prompt-part="optics">Оптика<small>реальный объектив</small></button><button class="prompt-chip" type="button" data-prompt-part="textures">Текстуры<small>что делает кадр живым</small></button><button class="prompt-chip" type="button" data-prompt-part="motion">Движение<small>ощущение момента</small></button><button class="prompt-chip" type="button" data-prompt-part="color">Цвет<small>настроение картинки</small></button><button class="prompt-chip" type="button" data-prompt-part="defects">Дефекты<small>реализм и несовершенства</small></button>
+</div>
+<div class="space-y-2 relative">
+<div class="absolute top-3 right-3 flex gap-2 prompt-icon-actions">
+<button class="prompt-icon-btn" id="imaxCopyBtn" type="button" onclick="copyCameraBuilderPrompt('imax')" title="Скопировать промпт" aria-label="Скопировать промпт"><svg class="copy-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="8" y="8" width="11" height="11" rx="2.5" stroke-width="2"></rect><path d="M5 15V7.5A2.5 2.5 0 0 1 7.5 5H15" stroke-width="2" stroke-linecap="round"></path></svg><svg class="check-icon hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M5 13l4 4L19 7" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+<button class="prompt-icon-btn" type="button" onclick="resetCameraBuilder('imax')" title="Очистить промпт" aria-label="Очистить промпт"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M4 7h16M10 11v5M14 11v5M6 7l1 12h10l1-12M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+</div>
+<div class="mono prompt-output text-xs p-4 bg-slate-950/80 rounded-xl border border-slate-900 text-slate-300 leading-relaxed select-all shadow-inner" id="imaxPromptOutput">Нажмите на пункты выше, чтобы собрать готовый imax-style промпт для генерации.</div>
+</div>
+</div>
+</section>
+<section class="glass-card rounded-3xl p-6 md:p-10 space-y-8 relative" id="sony">
+<div class="camera-header-row">
+  <div class="camera-header-text">
+    <h2 class="text-4xl md:text-5xl font-black tracking-tight text-white">9. Sony — Детализация</h2>
+    <p class="mt-2 text-lg italic text-slate-300">Чёткая современная картинка, высокая резкость, цифровая чистота и ощущение технической точности.</p>
+  </div>
+  <a class="camera-section-cta" href="#sony-builder">Собери Sony-промпт ↓</a>
+</div>
+<div class="camera-layout">
+<div class="camera-slideshow" data-camera="sony" aria-label="Примеры изображений для раздела 9. Sony — Детализация">
+<div class="camera-slide active" data-camera="sony" data-index="0">
+<img loading="lazy" decoding="async" alt="9. Sony — Детализация: пример изображения 1" src="assets/sony-1.png" data-full-src="assets/sony-1.png"/>
+<div class="camera-slide-overlay">
+<button class="camera-slide-action" type="button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h3l2-2h6l2 2h3v12H4V7zm8 10a4 4 0 100-8 4 4 0 000 8z"/></svg>Открыть фото</button>
+<button class="camera-slide-action" type="button" onclick="openCameraPrompt('sony', 0)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg>Открыть промпт</button>
+</div>
+<div class="camera-slide-caption"><span>9. Sony / пример 1</span></div><button class="camera-prompt-link" type="button" data-camera="sony" data-index="0"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg> Открыть промпт</button>
+</div><div class="camera-slide" data-camera="sony" data-index="1">
+<img loading="lazy" decoding="async" alt="9. Sony — Детализация: пример изображения 2" src="assets/sony-2.png" data-full-src="assets/sony-2.png"/>
+<div class="camera-slide-overlay">
+<button class="camera-slide-action" type="button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h3l2-2h6l2 2h3v12H4V7zm8 10a4 4 0 100-8 4 4 0 000 8z"/></svg>Открыть фото</button>
+<button class="camera-slide-action" type="button" onclick="openCameraPrompt('sony', 1)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg>Открыть промпт</button>
+</div>
+<div class="camera-slide-caption"><span>9. Sony / пример 2</span></div><button class="camera-prompt-link" type="button" data-camera="sony" data-index="1"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg> Открыть промпт</button>
+</div><div class="camera-slide" data-camera="sony" data-index="2">
+<img loading="lazy" decoding="async" alt="9. Sony — Детализация: пример изображения 3" src="assets/sony-3.png" data-full-src="assets/sony-3.png"/>
+<div class="camera-slide-overlay">
+<button class="camera-slide-action" type="button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h3l2-2h6l2 2h3v12H4V7zm8 10a4 4 0 100-8 4 4 0 000 8z"/></svg>Открыть фото</button>
+<button class="camera-slide-action" type="button" onclick="openCameraPrompt('sony', 2)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg>Открыть промпт</button>
+</div>
+<div class="camera-slide-caption"><span>9. Sony / пример 3</span></div><button class="camera-prompt-link" type="button" data-camera="sony" data-index="2"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg> Открыть промпт</button>
+</div>
+<div class="camera-slide-nav" aria-label="Навигация по слайдам"><button class="camera-dot active" type="button" onclick="setCameraSlide('sony',0)" aria-label="Слайд 1"></button><button class="camera-dot" type="button" onclick="setCameraSlide('sony',1)" aria-label="Слайд 2"></button><button class="camera-dot" type="button" onclick="setCameraSlide('sony',2)" aria-label="Слайд 3"></button></div>
+</div>
+<div class="camera-reco"><div class="camera-reco-item"><strong>Когда использовать</strong>Когда нужна современная чистая картинка с высокой детализацией и быстрым цифровым характером.</div><div class="camera-reco-item"><strong>Какой эффект</strong>Даёт резкость, технологичность, ясность, хорошую детализацию и актуальный hybrid photo/video look.</div><div class="camera-reco-item"><strong>Подходит для</strong>Техника, спорт, автомобили, digital-реклама, sharp portraits, product, travel, динамичный контент.</div><div class="camera-reco-item"><strong>Когда не использовать</strong>Когда нужна мягкая плёнка, грязный аналоговый стиль, старый репортаж или романтическая неопределённость.</div></div>
+</div>
+<div class="prompt-builder space-y-4 mt-8" id="sony-builder" data-camera-builder="sony">
+<div>
+<h3 class="camera-builder-title">Конструктор промпта для генерации в стиле Sony</h3>
+<p class="text-sm text-slate-400 mt-2 leading-relaxed">Нажимайте на пункты — случайные варианты будут собираться в готовый промпт для генерации.</p>
+</div>
+<div class="prompt-chip-grid" aria-label="Конструктор промпта для 9. Sony — Детализация">
+<button class="prompt-chip" type="button" data-prompt-part="genre">Жанр<small>что это за картинка</small></button><button class="prompt-chip" type="button" data-prompt-part="subject">Субъект<small>кто или что в кадре</small></button><button class="prompt-chip" type="button" data-prompt-part="light">Свет<small>как освещена сцена</small></button><button class="prompt-chip" type="button" data-prompt-part="environment">Среда<small>где происходит действие</small></button><button class="prompt-chip" type="button" data-prompt-part="camera">Камера<small>реальная камера</small></button><button class="prompt-chip" type="button" data-prompt-part="optics">Оптика<small>реальный объектив</small></button><button class="prompt-chip" type="button" data-prompt-part="textures">Текстуры<small>что делает кадр живым</small></button><button class="prompt-chip" type="button" data-prompt-part="motion">Движение<small>ощущение момента</small></button><button class="prompt-chip" type="button" data-prompt-part="color">Цвет<small>настроение картинки</small></button><button class="prompt-chip" type="button" data-prompt-part="defects">Дефекты<small>реализм и несовершенства</small></button>
+</div>
+<div class="space-y-2 relative">
+<div class="absolute top-3 right-3 flex gap-2 prompt-icon-actions">
+<button class="prompt-icon-btn" id="sonyCopyBtn" type="button" onclick="copyCameraBuilderPrompt('sony')" title="Скопировать промпт" aria-label="Скопировать промпт"><svg class="copy-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="8" y="8" width="11" height="11" rx="2.5" stroke-width="2"></rect><path d="M5 15V7.5A2.5 2.5 0 0 1 7.5 5H15" stroke-width="2" stroke-linecap="round"></path></svg><svg class="check-icon hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M5 13l4 4L19 7" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+<button class="prompt-icon-btn" type="button" onclick="resetCameraBuilder('sony')" title="Очистить промпт" aria-label="Очистить промпт"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M4 7h16M10 11v5M14 11v5M6 7l1 12h10l1-12M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+</div>
+<div class="mono prompt-output text-xs p-4 bg-slate-950/80 rounded-xl border border-slate-900 text-slate-300 leading-relaxed select-all shadow-inner" id="sonyPromptOutput">Нажмите на пункты выше, чтобы собрать готовый sony-style промпт для генерации.</div>
+</div>
+</div>
+</section>
+<section class="glass-card rounded-3xl p-6 md:p-10 space-y-8 relative" id="lomo">
+<div class="camera-header-row">
+  <div class="camera-header-text">
+    <h2 class="text-4xl md:text-5xl font-black tracking-tight text-white">10. Lomography — Хаос</h2>
+    <p class="mt-2 text-lg italic text-slate-300">Непредсказуемость, вспышка, странные цвета, ошибки и радость несовершенной картинки.</p>
+  </div>
+  <a class="camera-section-cta" href="#lomo-builder">Собери Lomo-промпт ↓</a>
+</div>
+<div class="camera-layout">
+<div class="camera-slideshow" data-camera="lomo" aria-label="Примеры изображений для раздела 10. Lomography — Хаос">
+<div class="camera-slide active" data-camera="lomo" data-index="0">
+<img loading="lazy" decoding="async" alt="10. Lomography — Хаос: пример изображения 1" src="assets/lomo-1.png" data-full-src="assets/lomo-1.png"/>
+<div class="camera-slide-overlay">
+<button class="camera-slide-action" type="button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h3l2-2h6l2 2h3v12H4V7zm8 10a4 4 0 100-8 4 4 0 000 8z"/></svg>Открыть фото</button>
+<button class="camera-slide-action" type="button" onclick="openCameraPrompt('lomo', 0)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg>Открыть промпт</button>
+</div>
+<div class="camera-slide-caption"><span>10. Lomography / пример 1</span></div><button class="camera-prompt-link" type="button" data-camera="lomo" data-index="0"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg> Открыть промпт</button>
+</div><div class="camera-slide" data-camera="lomo" data-index="1">
+<img loading="lazy" decoding="async" alt="10. Lomography — Хаос: пример изображения 2" src="assets/lomo-2.png" data-full-src="assets/lomo-2.png"/>
+<div class="camera-slide-overlay">
+<button class="camera-slide-action" type="button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h3l2-2h6l2 2h3v12H4V7zm8 10a4 4 0 100-8 4 4 0 000 8z"/></svg>Открыть фото</button>
+<button class="camera-slide-action" type="button" onclick="openCameraPrompt('lomo', 1)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg>Открыть промпт</button>
+</div>
+<div class="camera-slide-caption"><span>10. Lomography / пример 2</span></div><button class="camera-prompt-link" type="button" data-camera="lomo" data-index="1"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg> Открыть промпт</button>
+</div><div class="camera-slide" data-camera="lomo" data-index="2">
+<img loading="lazy" decoding="async" alt="10. Lomography — Хаос: пример изображения 3" src="assets/lomo-3.png" data-full-src="assets/lomo-3.png"/>
+<div class="camera-slide-overlay">
+<button class="camera-slide-action" type="button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h3l2-2h6l2 2h3v12H4V7zm8 10a4 4 0 100-8 4 4 0 000 8z"/></svg>Открыть фото</button>
+<button class="camera-slide-action" type="button" onclick="openCameraPrompt('lomo', 2)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg>Открыть промпт</button>
+</div>
+<div class="camera-slide-caption"><span>10. Lomography / пример 3</span></div><button class="camera-prompt-link" type="button" data-camera="lomo" data-index="2"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg> Открыть промпт</button>
+</div>
+<div class="camera-slide-nav" aria-label="Навигация по слайдам"><button class="camera-dot active" type="button" onclick="setCameraSlide('lomo',0)" aria-label="Слайд 1"></button><button class="camera-dot" type="button" onclick="setCameraSlide('lomo',1)" aria-label="Слайд 2"></button><button class="camera-dot" type="button" onclick="setCameraSlide('lomo',2)" aria-label="Слайд 3"></button></div>
+</div>
+<div class="camera-reco"><div class="camera-reco-item"><strong>Когда использовать</strong>Когда хочется живой ошибки, случайности, странного цвета и ощущения вечеринки или найденной плёнки.</div><div class="camera-reco-item"><strong>Какой эффект</strong>Делает картинку менее правильной: больше хаоса, вспышки, зерна, цветовых сдвигов и эмоционального шума.</div><div class="camera-reco-item"><strong>Подходит для</strong>Музыка, parties, youth content, art, retro visuals, experimental portraits, covers and zine aesthetics.</div><div class="camera-reco-item"><strong>Когда не использовать</strong>When you need a polished high-end brand look, clean beauty, realistic reportage or premium luxury.</div></div>
+</div>
+<div class="prompt-builder space-y-4 mt-8" id="lomo-builder" data-camera-builder="lomo">
+<div>
+<h3 class="camera-builder-title">Конструктор промпта для генерации в стиле Lomography</h3>
+<p class="text-sm text-slate-400 mt-2 leading-relaxed">Нажимайте на пункты — случайные варианты будут собираться в готовый промпт для генерации.</p>
+</div>
+<div class="prompt-chip-grid" aria-label="Конструктор промпта для 10. Lomography — Хаос">
+<button class="prompt-chip" type="button" data-prompt-part="genre">Жанр<small>что это за картинка</small></button><button class="prompt-chip" type="button" data-prompt-part="subject">Субъект<small>кто или что в кадре</small></button><button class="prompt-chip" type="button" data-prompt-part="light">Свет<small>как освещена сцена</small></button><button class="prompt-chip" type="button" data-prompt-part="environment">Среда<small>где происходит действие</small></button><button class="prompt-chip" type="button" data-prompt-part="camera">Камера<small>реальная камера</small></button><button class="prompt-chip" type="button" data-prompt-part="optics">Оптика<small>реальный объектив</small></button><button class="prompt-chip" type="button" data-prompt-part="textures">Текстуры<small>что делает кадр живым</small></button><button class="prompt-chip" type="button" data-prompt-part="motion">Движение<small>ощущение момента</small></button><button class="prompt-chip" type="button" data-prompt-part="color">Цвет<small>настроение картинки</small></button><button class="prompt-chip" type="button" data-prompt-part="defects">Дефекты<small>реализм и несовершенства</small></button>
+</div>
+<div class="space-y-2 relative">
+<div class="absolute top-3 right-3 flex gap-2 prompt-icon-actions">
+<button class="prompt-icon-btn" id="lomoCopyBtn" type="button" onclick="copyCameraBuilderPrompt('lomo')" title="Скопировать промпт" aria-label="Скопировать промпт"><svg class="copy-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="8" y="8" width="11" height="11" rx="2.5" stroke-width="2"></rect><path d="M5 15V7.5A2.5 2.5 0 0 1 7.5 5H15" stroke-width="2" stroke-linecap="round"></path></svg><svg class="check-icon hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M5 13l4 4L19 7" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+<button class="prompt-icon-btn" type="button" onclick="resetCameraBuilder('lomo')" title="Очистить промпт" aria-label="Очистить промпт"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M4 7h16M10 11v5M14 11v5M6 7l1 12h10l1-12M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+</div>
+<div class="mono prompt-output text-xs p-4 bg-slate-950/80 rounded-xl border border-slate-900 text-slate-300 leading-relaxed select-all shadow-inner" id="lomoPromptOutput">Нажмите на пункты выше, чтобы собрать готовый lomo-style промпт для генерации.</div>
+</div>
+</div>
+</section>
+<section class="glass-card rounded-3xl p-6 md:p-10 space-y-8 relative" id="fuji">
+<div class="camera-header-row">
+  <div class="camera-header-text">
+    <h2 class="text-4xl md:text-5xl font-black tracking-tight text-white">11. Fujifilm — Атмосфера</h2>
+    <p class="mt-2 text-lg italic text-slate-300">Цвет, настроение, плёночная мягкость и приятная повседневная кинематографичность.</p>
+  </div>
+  <a class="camera-section-cta" href="#fuji-builder">Собери Fujifilm-промпт ↓</a>
+</div>
+<div class="camera-layout">
+<div class="camera-slideshow" data-camera="fuji" aria-label="Примеры изображений для раздела 11. Fujifilm — Атмосфера">
+<div class="camera-slide active" data-camera="fuji" data-index="0">
+<img loading="lazy" decoding="async" alt="11. Fujifilm — Атмосфера: пример изображения 1" src="assets/fuji-1.png" data-full-src="assets/fuji-1.png"/>
+<div class="camera-slide-overlay">
+<button class="camera-slide-action" type="button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h3l2-2h6l2 2h3v12H4V7zm8 10a4 4 0 100-8 4 4 0 000 8z"/></svg>Открыть фото</button>
+<button class="camera-slide-action" type="button" onclick="openCameraPrompt('fuji', 0)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg>Открыть промпт</button>
+</div>
+<div class="camera-slide-caption"><span>11. Fujifilm / пример 1</span></div><button class="camera-prompt-link" type="button" data-camera="fuji" data-index="0"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg> Открыть промпт</button>
+</div><div class="camera-slide" data-camera="fuji" data-index="1">
+<img loading="lazy" decoding="async" alt="11. Fujifilm — Атмосфера: пример изображения 2" src="assets/fuji-2.png" data-full-src="assets/fuji-2.png"/>
+<div class="camera-slide-overlay">
+<button class="camera-slide-action" type="button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h3l2-2h6l2 2h3v12H4V7zm8 10a4 4 0 100-8 4 4 0 000 8z"/></svg>Открыть фото</button>
+<button class="camera-slide-action" type="button" onclick="openCameraPrompt('fuji', 1)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg>Открыть промпт</button>
+</div>
+<div class="camera-slide-caption"><span>11. Fujifilm / пример 2</span></div><button class="camera-prompt-link" type="button" data-camera="fuji" data-index="1"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg> Открыть промпт</button>
+</div><div class="camera-slide" data-camera="fuji" data-index="2">
+<img loading="lazy" decoding="async" alt="11. Fujifilm — Атмосфера: пример изображения 3" src="assets/fuji-3.png" data-full-src="assets/fuji-3.png"/>
+<div class="camera-slide-overlay">
+<button class="camera-slide-action" type="button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h3l2-2h6l2 2h3v12H4V7zm8 10a4 4 0 100-8 4 4 0 000 8z"/></svg>Открыть фото</button>
+<button class="camera-slide-action" type="button" onclick="openCameraPrompt('fuji', 2)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg>Открыть промпт</button>
+</div>
+<div class="camera-slide-caption"><span>11. Fujifilm / пример 3</span></div><button class="camera-prompt-link" type="button" data-camera="fuji" data-index="2"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8M8 15h5M5 4h14v16H5z"/></svg> Открыть промпт</button>
+</div>
+<div class="camera-slide-nav" aria-label="Навигация по слайдам"><button class="camera-dot active" type="button" onclick="setCameraSlide('fuji',0)" aria-label="Слайд 1"></button><button class="camera-dot" type="button" onclick="setCameraSlide('fuji',1)" aria-label="Слайд 2"></button><button class="camera-dot" type="button" onclick="setCameraSlide('fuji',2)" aria-label="Слайд 3"></button></div>
+</div>
+<div class="camera-reco"><div class="camera-reco-item"><strong>Когда использовать</strong>Когда хочется приятного цвета, мягкой атмосферы и красивого фото без тяжёлого киношного пафоса.</div><div class="camera-reco-item"><strong>Какой эффект</strong>Даёт уютную плёночную цветопередачу, мягкую кожу, живой контраст и атмосферу личного фотоальбома.</div><div class="camera-reco-item"><strong>Подходит для</strong>Travel, lifestyle, портреты, café scenes, indie fashion, повседневная красота, спокойная атмосфера.</div><div class="camera-reco-item"><strong>Когда не использовать</strong>Когда нужна стерильная рекламная чистота, жёсткий спорт, масштаб IMAX или очень дорогой luxury.</div></div>
+</div>
+<div class="prompt-builder space-y-4 mt-8" id="fuji-builder" data-camera-builder="fuji">
+<div>
+<h3 class="camera-builder-title">Конструктор промпта для генерации в стиле Fujifilm</h3>
+<p class="text-sm text-slate-400 mt-2 leading-relaxed">Нажимайте на пункты — случайные варианты будут собираться в готовый промпт для генерации.</p>
+</div>
+<div class="prompt-chip-grid" aria-label="Конструктор промпта для 11. Fujifilm — Атмосфера">
+<button class="prompt-chip" type="button" data-prompt-part="genre">Жанр<small>что это за картинка</small></button><button class="prompt-chip" type="button" data-prompt-part="subject">Субъект<small>кто или что в кадре</small></button><button class="prompt-chip" type="button" data-prompt-part="light">Свет<small>как освещена сцена</small></button><button class="prompt-chip" type="button" data-prompt-part="environment">Среда<small>где происходит действие</small></button><button class="prompt-chip" type="button" data-prompt-part="camera">Камера<small>реальная камера</small></button><button class="prompt-chip" type="button" data-prompt-part="optics">Оптика<small>реальный объектив</small></button><button class="prompt-chip" type="button" data-prompt-part="textures">Текстуры<small>что делает кадр живым</small></button><button class="prompt-chip" type="button" data-prompt-part="motion">Движение<small>ощущение момента</small></button><button class="prompt-chip" type="button" data-prompt-part="color">Цвет<small>настроение картинки</small></button><button class="prompt-chip" type="button" data-prompt-part="defects">Дефекты<small>реализм и несовершенства</small></button>
+</div>
+<div class="space-y-2 relative">
+<div class="absolute top-3 right-3 flex gap-2 prompt-icon-actions">
+<button class="prompt-icon-btn" id="fujiCopyBtn" type="button" onclick="copyCameraBuilderPrompt('fuji')" title="Скопировать промпт" aria-label="Скопировать промпт"><svg class="copy-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="8" y="8" width="11" height="11" rx="2.5" stroke-width="2"></rect><path d="M5 15V7.5A2.5 2.5 0 0 1 7.5 5H15" stroke-width="2" stroke-linecap="round"></path></svg><svg class="check-icon hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M5 13l4 4L19 7" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+<button class="prompt-icon-btn" type="button" onclick="resetCameraBuilder('fuji')" title="Очистить промпт" aria-label="Очистить промпт"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M4 7h16M10 11v5M14 11v5M6 7l1 12h10l1-12M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+</div>
+<div class="mono prompt-output text-xs p-4 bg-slate-950/80 rounded-xl border border-slate-900 text-slate-300 leading-relaxed select-all shadow-inner" id="fujiPromptOutput">Нажмите на пункты выше, чтобы собрать готовый fuji-style промпт для генерации.</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+<footer class="legal-footer relative z-10 px-6 py-8 text-center text-xs text-slate-500">
+  <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-3 md:gap-6">
+    <button type="button" class="legal-link" onclick="openLegalModal('privacy')">Политика конфиденциальности</button>
+    <span class="hidden md:inline text-slate-700">•</span>
+    <button type="button" class="legal-link" onclick="openLegalModal('terms')">Условия использования</button>
+  </div>
+</footer>
+
+<div class="legal-modal" id="privacyModal" onclick="closeLegalModal(event)">
+  <div class="legal-modal-card" onclick="event.stopPropagation()">
+    <div class="prompt-card-header flex items-start justify-between gap-4 mb-4">
+      <h3 class="text-2xl font-extrabold text-white">Политика конфиденциальности</h3>
+      <button class="legal-modal-close" onclick="closeLegalModal(event)">×</button>
+    </div>
+    <div class="legal-content text-sm">
+      <p>Этот сайт — информационный гайд по генерации изображений с помощью ИИ и промпт-инжинирингу.</p>
+      <h4>Сбор данных</h4>
+      <p>На сайте нет регистрации, аккаунтов, комментариев или контактных форм, и сайт намеренно не собирает персональные данные посетителей.</p>
+      <h4>Cookies и локальное хранение</h4>
+      <p>Сайт не использует аналитику, рекламные трекеры, маркетинговые cookies или долгосрочное локальное хранение для отслеживания посетителей.</p>
+      <h4>Сторонние ресурсы</h4>
+      <p>Сайт может загружать сторонние ресурсы, такие как Google Fonts, Tailwind CDN, изображения и внешние платёжные страницы. Эти сторонние сервисы могут обрабатывать технические данные согласно своим правилам.</p>
+      <h4>Платежи</h4>
+      <p>Если вы используете кнопку поддержки, обработка платежа происходит на стороне внешнего платёжного провайдера. Этот сайт не получает и не хранит данные вашей банковской карты.</p>
+    </div>
+  </div>
+</div>
+
+<div class="legal-modal" id="termsModal" onclick="closeLegalModal(event)">
+  <div class="legal-modal-card" onclick="event.stopPropagation()">
+    <div class="prompt-card-header flex items-start justify-between gap-4 mb-4">
+      <h3 class="text-2xl font-extrabold text-white">Условия использования</h3>
+      <button class="legal-modal-close" onclick="closeLegalModal(event)">×</button>
+    </div>
+    <div class="legal-content text-sm">
+      <p>Этот сайт предоставляется как образовательный и творческий гайд по работе с визуальными промптами и ИИ-изображениями.</p>
+      <h4>Не профессиональная консультация</h4>
+      <p>Контент предоставляется только в информационных и творческих целях. Он не является юридической, финансовой, медицинской или иной профессиональной консультацией.</p>
+      <h4>Использование промптов</h4>
+      <p>Вы можете использовать и адаптировать структуры промптов для своих творческих проектов. Результаты могут отличаться в зависимости от ИИ-инструмента, модели, настроек и исходных материалов.</p>
+      <h4>Внешние ссылки</h4>
+      <p>Сайт может содержать ссылки на внешние сервисы. Владелец сайта не отвечает за содержание, доступность или правила сторонних сайтов.</p>
+      <h4>Платежи поддержки</h4>
+      <p>Платежи поддержки являются добровольными и используются для поддержки и развития гайда.</p>
+    </div>
+  </div>
+</div>
+
+
+<div id="donationWidget" class="donation-widget">
+  <div class="donation-card relative">
+    <button class="donation-close" onclick="closeDonation()">×</button>
+    <div class="text-sm font-semibold text-white"><span class="donation-dot"></span>Поддержать проект</div>
+    <div class="text-xs text-slate-300 mt-2 leading-relaxed">Собираю на оплату нейросетей, генераций и развитие гайда.</div>
+    <a href="https://yoomoney.ru/to/4100119184822517" target="_blank" class="donation-btn">Поддержать</a>
+  </div>
+</div>
+
+
+<div class="smartphone-prompt-modal" id="smartphonePromptModal" onclick="closeSmartphonePrompt(event)">
+  <div class="smartphone-prompt-card" onclick="event.stopPropagation()">
+    <div class="smartphone-prompt-header">
+      <h3 class="text-2xl font-extrabold text-white">Промпт</h3>
+      <div class="flex items-center gap-2">
+        <button class="smartphone-prompt-copy" id="smartphonePromptCopyBtn" type="button" onclick="copySmartphoneModalPrompt()" aria-label="Скопировать промпт"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="8" y="8" width="11" height="11" rx="2.5" stroke-width="2"></rect><path d="M5 15V7.5A2.5 2.5 0 0 1 7.5 5H15" stroke-width="2" stroke-linecap="round"></path></svg></button>
+        <button class="legal-modal-close" onclick="closeSmartphonePrompt(event)">×</button>
+      </div>
+    </div>
+    <div class="mono smartphone-prompt-text text-xs p-4 bg-slate-950/80 rounded-xl border border-slate-900 text-slate-300 leading-relaxed select-all" id="smartphonePromptModalText"></div>
+  </div>
+</div>
+
+
+<a href="#top" class="floating-top-left" id="floatingTopLeft" onclick="event.preventDefault(); window.scrollTo({top:0, behavior:'smooth'});">↑ Наверх</a>
+
+
+<div class="camera-prompt-modal" id="cameraPromptModal" onclick="closeCameraPrompt(event)">
+  <div class="camera-prompt-card" onclick="event.stopPropagation()">
+    <div class="camera-prompt-header">
+      <h3 class="text-2xl font-extrabold text-white">Промпт</h3>
+      <div class="flex items-center gap-2">
+        <button class="smartphone-prompt-copy" id="cameraPromptCopyBtn" type="button" onclick="copyCameraModalPrompt()" aria-label="Скопировать промпт"><svg class="copy-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="8" y="8" width="11" height="11" rx="2.5" stroke-width="2"></rect><path d="M5 15V7.5A2.5 2.5 0 0 1 7.5 5H15" stroke-width="2" stroke-linecap="round"></path></svg><svg class="check-icon hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M5 13l4 4L19 7" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+        <button class="legal-modal-close" onclick="closeCameraPrompt(event)">×</button>
+      </div>
+    </div>
+    <div class="mono camera-prompt-text text-xs p-4 bg-slate-950/80 rounded-xl border border-slate-900 text-slate-300 leading-relaxed select-all" id="cameraPromptModalText"></div>
+  </div>
+</div>
+
+
+<!-- canon prompt links fixed v4 -->
+
+
+    <script src="js/data.js" defer></script>
+    <script src="js/main.js" defer></script>
+</body>
+</html>

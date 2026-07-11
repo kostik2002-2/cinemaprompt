@@ -1,0 +1,30 @@
+# OS and editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Local development and tooling
+.ai-bridge/
+*.log
+*.tmp
+*.temp
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Build and dependency folders
+node_modules/
+dist/
+build/
+.cache/
+
+# Archives and backups
+*.zip
+*.rar
+*.7z
+*.bak
+*~

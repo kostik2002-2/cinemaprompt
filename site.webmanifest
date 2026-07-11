@@ -1,0 +1,19 @@
+{
+  "name": "CinemaPrompt",
+  "short_name": "CinemaPrompt",
+  "description": "Камеры, кинооптика и визуальные стили в промптах для AI-генерации.",
+  "lang": "ru-RU",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#030712",
+  "theme_color": "#030712",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
